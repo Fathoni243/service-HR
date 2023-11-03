@@ -19,13 +19,16 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'departments'], function () use ($router) {
     $router->get('/', ['uses' => 'DepartmentController@getDepartments']);
+    $router->delete('/{id}', ['uses' => 'DepartmentController@deleteDepartments']);
 });
 
 $router->group(['prefix' => 'hierarchies'], function () use ($router) {
     $router->get('/', ['uses' => 'HierarchyController@getHierarchies']);
+    $router->delete('/{id}', ['uses' => 'HierarchyController@deleteHierarchies']);
 });
 
 $router->group(['prefix' => 'users'], function () use ($router) {
     $router->get('/', ['uses' => 'UserController@getUsers']);
+    $router->delete('/{id}', ['uses' => 'UserController@deleteUsers']);
 });
 

@@ -29,5 +29,20 @@ class UserController extends Controller
             ]
         ], 200);
     }
+
+    public function deleteUsers($id)
+    {
+
+        $users = User::find($id);
+        $users->delete();
+
+        return response()->json([
+            'status' => 'Success',
+            'message' => 'delete user succes',
+            'data' => [
+                'users' => $users,
+            ]
+        ],200);
+    }
     
 }

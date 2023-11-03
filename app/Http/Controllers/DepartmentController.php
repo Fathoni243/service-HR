@@ -29,4 +29,18 @@ class DepartmentController extends Controller
             ]
         ], 200);
     }
+
+    public function deleteDepartments($id)
+    {
+        $departments = Department::find($id);
+        $departments->delete();
+
+        return response()->json([
+            'status' => 'Success',
+            'message' => 'delete departments success',
+            'data' => [
+                'departments' => $departments,
+            ]
+        ], 200);
+    }
 }
