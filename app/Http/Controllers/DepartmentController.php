@@ -46,6 +46,21 @@ class DepartmentController extends Controller
         ], 200);
     }
 
+    public function updateDepartments(Request $request, $id){
+        $departments = Department::find($id);
+        $department = Department::where('id', $id)->update([
+            'nama' => $request->nama
+        ]);
+
+        return response()->json([
+            'status' => 'Success',
+            'message' => 'departments is updated',
+            'data' => [
+                'nama' => $request->nama
+            ]
+        ], 200);
+    }
+
     public function deleteDepartments($id)
     {
         $departments = Department::find($id);

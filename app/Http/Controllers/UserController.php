@@ -65,6 +65,29 @@ class UserController extends Controller
         ], 200);
     }
 
+    public function updateUsers(Request $request, $id){
+        $users = User::find($id);
+        $users = User::where('id', $id)->update([
+            'department_Id' => $request->department_id,
+            'hierarchy_Id' => $request->hierarchy_id,
+            'username' => $request-> $username,
+            'email' => $request-> $email,
+            'nik' => $request-> $nik,
+            'contact'=> $request-> $contact,
+            'alamat' => $request-> $alamat,
+            'tanggal_masuk' => $request-> $tanggal_masuk,
+            'salary' => $request-> $salary
+        ]);
+
+        return response()->json([
+            'status' => 'Success',
+            'message' => 'user is updated',
+            'data' => [
+                'users' => $users,
+            ]
+        ], 200);
+    }
+
     public function deleteUsers($id)
     {
 
