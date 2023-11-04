@@ -13,6 +13,9 @@ class User extends Model
      * @var string[]
      */
     protected $fillable = [
+        'department_Id',
+        'hierarchy_Id',
+        'password',
         'username', 
         'email', 
         'nik', 
@@ -28,9 +31,7 @@ class User extends Model
      * @var string[]
      */
     protected $hidden = [
-        'department_Id',
-        'hierarchy_Id',
-        'password',
+        
     ];
 
     public function department()
@@ -38,7 +39,7 @@ class User extends Model
         return $this->belongsTo(Department::class, 'department_Id');
     }
 
-    public function hiearchy()
+    public function hierarchy()
     {
         return $this->belongsTo(Hierarchy::class, 'hierarchy_Id');
     }

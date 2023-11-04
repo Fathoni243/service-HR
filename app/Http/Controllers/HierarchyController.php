@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hierarchy;
+use Illuminate\Http\Request;
 
 class HierarchyController extends Controller
 {
@@ -14,6 +15,21 @@ class HierarchyController extends Controller
     public function __construct()
     {
         //
+    }
+
+    public function createHierarchy(Request $request)
+    {
+        $hierarchy = Hierarchy::create([
+            'nama' => $request->nama
+        ]);
+
+        return response()->json([
+            'status' => 'Success',
+            'message' => 'new hierarchy created',
+            'data' => [
+                'hiearchy' => $hierarchy,
+            ]
+        ], 200);
     }
 
     //
