@@ -54,7 +54,7 @@ class UserController extends Controller
     //
     public function getUsers()
     {
-        $users = User::all()->load('department', 'hiearchy');
+        $users = User::all()->load('department', 'hierarchy');
 
         return response()->json([
             'status' => 'Success',
