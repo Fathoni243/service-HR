@@ -35,6 +35,6 @@ $router->group(['prefix' => 'users'], function () use ($router) {
     $router->get('/', ['uses' => 'UserController@getUsers']);
     $router->post('/create', ['uses' => 'UserController@createUser']);
     $router->delete('/{id}', ['uses' => 'UserController@deleteUsers']);
-    $router->delete('/{id}', ['uses' => 'UserController@updateUsers']);
+    $router->put('/{id}', ['uses' => 'UserController@updateUsers']);
 });
 
