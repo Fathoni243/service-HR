@@ -31,7 +31,9 @@ class User extends Model
      * @var string[]
      */
     protected $hidden = [
-        
+        'department_Id',
+        'hierarchy_Id',
+        'password'
     ];
 
     public function department()
