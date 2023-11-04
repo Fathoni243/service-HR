@@ -47,16 +47,17 @@ class HierarchyController extends Controller
     }
 
     public function updateHierarchies(Request $request, $id){
-        $hierarchies = Hierarchy::find($id);
-        $hierarchies = Hierarchy::where('id', $id)->update([
+        Hierarchy::where('id', $id)->update([
             'nama' => $request->nama
         ]);
+        
+        $newHierarchy = Hierarchy::find($id);
 
         return response()->json([
             'status' => 'Success',
             'message' => 'hierarchy is updated',
             'data' => [
-                'nama' => $request->nama,
+                'hierarchy' => $newHierarchy,
             ]
         ], 200);
     }

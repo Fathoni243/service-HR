@@ -47,16 +47,17 @@ class DepartmentController extends Controller
     }
 
     public function updateDepartments(Request $request, $id){
-        $departments = Department::find($id);
-        $department = Department::where('id', $id)->update([
+        Department::where('id', $id)->update([
             'nama' => $request->nama
         ]);
+
+        $newDepartment = Department::find($id);
 
         return response()->json([
             'status' => 'Success',
             'message' => 'departments is updated',
             'data' => [
-                'nama' => $request->nama
+                'department' => $newDepartment
             ]
         ], 200);
     }

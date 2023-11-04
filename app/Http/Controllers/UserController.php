@@ -6,8 +6,6 @@ use App\Models\User;
 Use \Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Department;
-use App\Models\Hierarchy;
 
 
 class UserController extends Controller
@@ -24,21 +22,16 @@ class UserController extends Controller
 
     public function createUser(Request $request)
     {
-        $department = Department::find($request->department_id);
-        $hierarchy = Hierarchy::find($request->hierarchy_id);
-
-        $password = $request->password;
-
         $user = User::create([
             'department_Id' => $request->department_Id,
             'hierarchy_Id' => $request->hierarchy_Id,
             'username' => $request->username,
             'email' => $request->email,
-            'password' => Hash::make($password),
+            'password' => Hash::make($request->password),
             'nik' => $request->nik,
             'contact' => $request->contact,
             'alamat' => $request->alamat,
-            'tanggal_masuk' => Carbon::now(),
+            'tanggal_masuk' => $request->tanggal_masuk,
             'salary' => $request->salary
         ]);
 
@@ -66,31 +59,32 @@ class UserController extends Controller
     }
 
     public function updateUsers(Request $request, $id){
-        $users = User::find($id);
-        $users = User::where('id', $id)->update([
+        User::where('id', $id)->update([
             'department_Id' => $request->department_Id,
             'hierarchy_Id' => $request->hierarchy_Id,
-            'username' => $request-> username,
+            'username' => $request->username,
             'password' => Hash::make($request->password),
-            'email' => $request-> email,
-            'nik' => $request-> nik,
-            'contact'=> $request-> contact,
-            'alamat' => $request-> alamat,
+            'email' => $request->email,
+            'nik' => $request->nik,
+            'contact'=> $request->contact,
+            'alamat' => $request->alamat,
+            'tanggal_masuk' => $request->tanggal_masuk,
             'salary' => $request-> salary
         ]);
+
+        $newUser = User::find($id);
 
         return response()->json([
             'status' => 'Success',
             'message' => 'user is updated',
             'data' => [
-                'users' => $request ->all(),
+                'users' => $newUser,
             ]
         ], 200);
     }
 
     public function deleteUsers($id)
     {
-
         $users = User::find($id);
         $users->delete();
 
@@ -102,5 +96,4 @@ class UserController extends Controller
             ]
         ],200);
     }
-    
 }

@@ -18,23 +18,23 @@ $router->get('/', function () use ($router) {
 });
 
 $router->group(['prefix' => 'departments'], function () use ($router) {
+    $router->post('/', ['uses' => 'DepartmentController@createDepartment']);
     $router->get('/', ['uses' => 'DepartmentController@getDepartments']);
-    $router->post('/create', ['uses' => 'DepartmentController@createDepartment']);
     $router->delete('/{id}', ['uses' => 'DepartmentController@deleteDepartments']);
-    $router->put('/{id}', ['uses' => 'DepartmentController@updateDepartments']);
+    $router->patch('/{id}', ['uses' => 'DepartmentController@updateDepartments']);
 });
 
 $router->group(['prefix' => 'hierarchies'], function () use ($router) {
+    $router->post('/', ['uses' => 'HierarchyController@createHierarchy']);
     $router->get('/', ['uses' => 'HierarchyController@getHierarchies']);
-    $router->post('/create', ['uses' => 'HierarchyController@createHierarchy']);
     $router->delete('/{id}', ['uses' => 'HierarchyController@deleteHierarchies']);
-    $router->put('/{id}', ['uses' => 'HierarchyController@updateHierarchies']);
+    $router->patch('/{id}', ['uses' => 'HierarchyController@updateHierarchies']);
 });
 
 $router->group(['prefix' => 'users'], function () use ($router) {
+    $router->post('/', ['uses' => 'UserController@createUser']);
     $router->get('/', ['uses' => 'UserController@getUsers']);
-    $router->post('/create', ['uses' => 'UserController@createUser']);
     $router->delete('/{id}', ['uses' => 'UserController@deleteUsers']);
-    $router->put('/{id}', ['uses' => 'UserController@updateUsers']);
+    $router->patch('/{id}', ['uses' => 'UserController@updateUsers']);
 });
 
