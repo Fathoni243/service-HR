@@ -30,8 +30,8 @@ class UserController extends Controller
         $password = $request->password;
 
         $user = User::create([
-            'department_Id' => $request->department_id,
-            'hierarchy_Id' => $request->hierarchy_id,
+            'department_Id' => $request->department_Id,
+            'hierarchy_Id' => $request->hierarchy_Id,
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($password),
@@ -67,17 +67,17 @@ class UserController extends Controller
 
     public function updateUsers(Request $request, $id){
         $users = User::find($id);
-        $users = User::where('id', $id)->update($request -> all()
-            // 'department_Id' => $request->department_id,
-            // 'hierarchy_Id' => $request->hierarchy_id,
-            // 'username' => $request-> username,
-            // 'email' => $request-> email,
-            // 'nik' => $request-> nik,
-            // 'contact'=> $request-> contact,
-            // 'alamat' => $request-> alamat,
-            // 'tanggal_masuk' => $request-> tanggal_masuk,
-            // 'salary' => $request-> salary
-        );
+        $users = User::where('id', $id)->update([
+            'department_Id' => $request->department_Id,
+            'hierarchy_Id' => $request->hierarchy_Id,
+            'username' => $request-> username,
+            'password' => Hash::make($request->password),
+            'email' => $request-> email,
+            'nik' => $request-> nik,
+            'contact'=> $request-> contact,
+            'alamat' => $request-> alamat,
+            'salary' => $request-> salary
+        ]);
 
         return response()->json([
             'status' => 'Success',
