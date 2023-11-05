@@ -26,9 +26,7 @@ class HierarchyController extends Controller
         return response()->json([
             'status' => 'Success',
             'message' => 'new hierarchy created',
-            'data' => [
-                'hiearchy' => $hierarchy,
-            ]
+            'data' => $hierarchy,
         ], 200);
     }
 
@@ -40,9 +38,7 @@ class HierarchyController extends Controller
         return response()->json([
             'status' => 'Success',
             'message' => 'all hierarchies grabbed',
-            'data' => [
-                'hiearchies' => $hierarchies,
-            ]
+            'data' => $hierarchies,
         ], 200);
     }
 
@@ -56,23 +52,19 @@ class HierarchyController extends Controller
         return response()->json([
             'status' => 'Success',
             'message' => 'hierarchy is updated',
-            'data' => [
-                'hierarchy' => $newHierarchy,
-            ]
+            'data' => $newHierarchy,
         ], 200);
     }
 
     public function deleteHierarchies($id)
     {
-        $hierarchies = Hierarchy::find($id);
-        $hierarchies->delete();
+        $hierarchy = Hierarchy::find($id);
+        $hierarchy->delete();
 
         return response()->json([
             'status' => 'Success',
-            'message' => 'delete hierarchies success',
-            'data' => [
-                'hiearchies' => $hierarchies,
-            ]
+            'message' => 'delete hierarchy success',
+            'data' => $hierarchy,
         ], 200);
     }
 }

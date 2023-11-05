@@ -25,10 +25,8 @@ class DepartmentController extends Controller
 
         return response()->json([
             'status' => 'Success',
-            'message' => 'new departments created',
-            'data' => [
-                'department' => $department,
-            ]
+            'message' => 'new department created',
+            'data' => $department,
         ], 200);
     }
 
@@ -40,9 +38,7 @@ class DepartmentController extends Controller
         return response()->json([
             'status' => 'Success',
             'message' => 'all departments grabbed',
-            'data' => [
-                'departments' => $departments,
-            ]
+            'data' => $departments,
         ], 200);
     }
 
@@ -55,10 +51,8 @@ class DepartmentController extends Controller
 
         return response()->json([
             'status' => 'Success',
-            'message' => 'departments is updated',
-            'data' => [
-                'department' => $newDepartment
-            ]
+            'message' => 'department is updated',
+            'data' => $newDepartment,
         ], 200);
     }
 
@@ -69,10 +63,8 @@ class DepartmentController extends Controller
 
         return response()->json([
             'status' => 'Success',
-            'message' => 'delete departments success',
-            'data' => [
-                'departments' => $departments,
-            ]
+            'message' => 'delete department success',
+            'data' => $departments,
         ], 200);
     }
 }

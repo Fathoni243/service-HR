@@ -38,9 +38,7 @@ class UserController extends Controller
         return response()->json([
             'status' => 'Success',
             'message' => 'new user created',
-            'data' => [
-                'user' => $user,
-            ]
+            'data' => $user,
         ], 200);
     }
 
@@ -51,10 +49,8 @@ class UserController extends Controller
 
         return response()->json([
             'status' => 'Success',
-            'message' => 'all user grabbed',
-            'data' => [
-                'users' => $users,
-            ]
+            'message' => 'all users grabbed',
+            'data' => $users,
         ], 200);
     }
 
@@ -77,9 +73,7 @@ class UserController extends Controller
         return response()->json([
             'status' => 'Success',
             'message' => 'user is updated',
-            'data' => [
-                'users' => $newUser,
-            ]
+            'data' => $newUser,
         ], 200);
     }
 
@@ -91,9 +85,7 @@ class UserController extends Controller
         return response()->json([
             'status' => 'Success',
             'message' => 'delete user succes',
-            'data' => [
-                'users' => $users,
-            ]
+            'data' => $users,
         ],200);
     }
 }
