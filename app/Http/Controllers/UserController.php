@@ -46,7 +46,7 @@ class UserController extends Controller
     // user by id
     public function getUserById(Request $request)
     {
-        $user = User::find($request->id);
+        $user = User::find($request->id)->load('department', 'hierarchy');
 
         return response()->json([
             'status' => 'Success',
