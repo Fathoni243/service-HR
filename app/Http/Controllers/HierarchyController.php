@@ -30,6 +30,18 @@ class HierarchyController extends Controller
         ], 200);
     }
 
+    //get hierarchy by Id
+    public function getHierarchyById(Request $request)
+    {
+        $hierarchy = Hierarchy::find($request->id);
+
+        return response()->json([
+            'status' => 'Success',
+            'message' => 'a hierarchy successfully grabbed',
+            'data' => $hierarchy,
+        ], 200);
+    }
+
     //
     public function getHierarchies()
     {

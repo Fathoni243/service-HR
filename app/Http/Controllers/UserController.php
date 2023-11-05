@@ -42,6 +42,19 @@ class UserController extends Controller
         ], 200);
     }
 
+
+    // user by id
+    public function getUserById(Request $request)
+    {
+        $user = User::find($request->id);
+
+        return response()->json([
+            'status' => 'Success',
+            'message' => 'a user successfully grabbed',
+            'data' => $user,
+        ], 200);
+    }
+
     //
     public function getUsers()
     {

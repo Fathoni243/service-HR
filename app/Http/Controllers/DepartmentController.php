@@ -30,6 +30,17 @@ class DepartmentController extends Controller
         ], 200);
     }
 
+    public function getDepartmentById(Request $request)
+    {
+        $department = Department::find($request->id);
+
+        return response()->json([
+            'status' => 'Success',
+            'message' => 'a department successfully grabbed',
+            'data' => $department,
+        ], 200);
+    }
+
     //
     public function getDepartments()
     {

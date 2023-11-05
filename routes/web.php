@@ -20,6 +20,7 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'departments'], function () use ($router) {
     $router->post('/', ['uses' => 'DepartmentController@createDepartment']);
     $router->get('/', ['uses' => 'DepartmentController@getDepartments']);
+    $router->get('/{id}', ['uses' => 'DepartmentController@getDepartmentById']);
     $router->delete('/{id}', ['uses' => 'DepartmentController@deleteDepartments']);
     $router->patch('/{id}', ['uses' => 'DepartmentController@updateDepartments']);
 });
@@ -27,6 +28,7 @@ $router->group(['prefix' => 'departments'], function () use ($router) {
 $router->group(['prefix' => 'hierarchies'], function () use ($router) {
     $router->post('/', ['uses' => 'HierarchyController@createHierarchy']);
     $router->get('/', ['uses' => 'HierarchyController@getHierarchies']);
+    $router->get('/{id}', ['uses' => 'HierarchyController@getHierarchyById']); 
     $router->delete('/{id}', ['uses' => 'HierarchyController@deleteHierarchies']);
     $router->patch('/{id}', ['uses' => 'HierarchyController@updateHierarchies']);
 });
@@ -34,6 +36,7 @@ $router->group(['prefix' => 'hierarchies'], function () use ($router) {
 $router->group(['prefix' => 'users'], function () use ($router) {
     $router->post('/', ['uses' => 'UserController@createUser']);
     $router->get('/', ['uses' => 'UserController@getUsers']);
+    $router->get('/{id}', ['uses' => 'UserController@getUserById']); 
     $router->delete('/{id}', ['uses' => 'UserController@deleteUsers']);
     $router->patch('/{id}', ['uses' => 'UserController@updateUsers']);
 });
