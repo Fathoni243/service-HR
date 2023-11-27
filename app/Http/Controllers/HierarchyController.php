@@ -33,7 +33,7 @@ class HierarchyController extends Controller
     //get hierarchy by Id
     public function getHierarchyById(Request $request)
     {
-        $hierarchy = Hierarchy::find($request->id);
+        $hierarchy = Hierarchy::find($request->id)->load('users');
 
         return response()->json([
             'status' => 'Success',

@@ -32,7 +32,7 @@ class DepartmentController extends Controller
 
     public function getDepartmentById(Request $request)
     {
-        $department = Department::find($request->id);
+        $department = Department::find($request->id)->load('users');
 
         return response()->json([
             'status' => 'Success',
