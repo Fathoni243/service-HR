@@ -19,6 +19,7 @@ class User extends Model
         'username', 
         'email', 
         'nik', 
+        'jabatan', 
         'contact',
         'alamat',
         'tanggal_masuk',

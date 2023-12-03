@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('email');
             $table->string('nik');
+            $table->enum('jabatan', ['Direktur', 'VP', 'GM', 'SR', 'Chief','Staff']);
             $table->string('contact');
             $table->string('alamat');
             $table->date('tanggal_masuk');
